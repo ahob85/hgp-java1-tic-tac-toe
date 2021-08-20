@@ -49,8 +49,7 @@ public class TicTacToe
      * include your name as the author!
      */
     public static void printGreeting() {
-        System.out.println("Tic-Tac-Toe");
-        System.out.println("By: Hidden Genius");
+
     }
 
     /**
@@ -58,11 +57,7 @@ public class TicTacToe
      * spaces).
      */
     public static void resetBoard() {
-        for(int i = 0; i < board.length; i++) {
-            for(int j = 0; j < board.length; j++) {
-                board[i][j] = " - ";
-            }
-        }
+
     }
 
     /**
@@ -77,30 +72,14 @@ public class TicTacToe
      * -set quit to false
      */
     public static void setupGame() {
-        board = new String[][] {
-            {null, null, null},
-            {null, null, null},
-            {null, null, null}
-        };
-        resetBoard();
-        turnsLeft = 9;
-        activePlayer = (int) Math.floor(Math.random() * 2 + 1);
-        winner = "";
-        quit = false;
+
     }
 
     /**
      * Print the tic-tac-toe board to the terminal so the player can see it.
      */
     public static void printBoard() {
-        System.out.println("  " + " 0 " + " 1 " + " 2 ");
-        for(int i = 0; i < board.length; i++) {
-            String currentRow = i + " ";
-            for(int j = 0; j < board[i].length; j++) {
-                currentRow += board[i][j];
-            }
-            System.out.println(currentRow);
-        }
+
     }
 
     /**
@@ -109,23 +88,7 @@ public class TicTacToe
      * string "".
      */
     public static String checkRows() {
-        for(int i = 0; i < board.length; i++) {
-            int xCount = 0;
-            int oCount = 0;
-            for(int j = 0; j < board[i].length; j++) {
-                if(board[i][j].equals(" X ")) {
-                    xCount++;
-                } else if(board[i][j].equals(" O ")) {
-                    oCount++;
-                }
-            }
-            if(xCount == 3) {
-                return "X";
-            } else if(oCount == 3) {
-                return "O";
-            }
-        }
-        return "";
+
     }
 
     /**
@@ -134,23 +97,7 @@ public class TicTacToe
      * "".
      */
     public static String checkColumns() {
-        for(int i = 0; i < board.length; i++) {
-            int xCount = 0;
-            int oCount = 0;
-            for(int j = 0; j < board[i].length; j++) {
-                if(board[j][i].equals(" X ")) {
-                    xCount++;
-                } else if(board[j][i].equals(" O ")) {
-                    oCount++;
-                }
-            }
-            if(xCount == 3) {
-                return "X";
-            } else if(oCount == 3) {
-                return "O";
-            }
-        }
-        return "";
+
     }
 
     /**
@@ -159,21 +106,7 @@ public class TicTacToe
      * won, return an empty string "".
      */
     public static String checkLeftDiag() {
-        int xCount = 0;
-        int oCount = 0;
-        for(int i = 0; i < board.length; i++) {
-            if(board[i][i].equals(" X ")) {
-                xCount++;
-            } else if(board[i][i].equals(" O ")) {
-                oCount++;
-            }
-        }
-        if(xCount == 3) {
-            return "X";
-        } else if(oCount == 3) {
-            return "O";
-        }
-        return "";
+
     }
 
     /**
@@ -182,21 +115,7 @@ public class TicTacToe
      * won, return an empty string "".
      */
     public static String checkRightDiag() {
-        int xCount = 0;
-        int oCount = 0;
-        for(int i = board.length - 1; i >= 0; i--) {
-            if(board[i][2 - i].equals(" X ")) {
-                xCount++;
-            } else if(board[i][2 - i].equals(" O ")) {
-                oCount++;
-            }
-        }
-        if(xCount == 3) {
-            return "X";
-        } else if(oCount == 3) {
-            return "O";
-        }
-        return "";
+
     }
 
     /**
@@ -205,21 +124,7 @@ public class TicTacToe
      * return "O". If no one has won, return an empty string "".
      */
     public static String checkWon() {
-        String rowWon = checkRows();
-        String colWon = checkColumns();
-        String leftDiagWon = checkLeftDiag();
-        String rightDiagWon = checkRightDiag();
-        if(!rowWon.equals("")) {
-            return rowWon;
-        } else if(!colWon.equals("")) {
-            return colWon;
-        } else if(!leftDiagWon.equals("")) {
-            return leftDiagWon;
-        } else if(!rightDiagWon.equals("")) {
-            return rightDiagWon;
-        } else {
-            return "";
-        }
+
     }
 
     /**
@@ -234,37 +139,7 @@ public class TicTacToe
      * other player.
      */
     public static void chooseRowColumn() {
-        String playerName = "X";
-        if(activePlayer == 2) {
-            playerName = "O";
-        }
-        boolean validSelection = false;
-        while(!validSelection) {
-            System.out.print(playerName + ", choose a row: ");
-            int row = Integer.parseInt(SC.nextLine());
-            while(!(row >= 0 && row <= 2)) {
-                System.out.println("Please enter 0, 1, or 2.");
-                System.out.print(playerName + ", choose a row: ");
-                row = Integer.parseInt(SC.nextLine());
-            }
-            System.out.print(playerName + ", choose a column: ");
-            int column = Integer.parseInt(SC.nextLine());
-            while(!(column >= 0 && column <= 2)) {
-                System.out.println("Please enter 0, 1, or 2.");
-                column = Integer.parseInt(SC.nextLine());
-            }
-            if(!board[row][column].equals(" - ")) {
-                System.out.println("That square is already taken! Try again!");
-            } else {
-                board[row][column] = " " + playerName + " ";
-                validSelection = true;
-            }
-        }
-        if(activePlayer == 1) {
-            activePlayer = 2;
-        } else {
-            activePlayer = 1;
-        }
+
     }
 
     /**
@@ -284,27 +159,7 @@ public class TicTacToe
      * other than "yes" or "y" (or whatever else you want), set quit to true.
      */
     public static void playGame() {
-        while(turnsLeft > 0 && winner == "") {
-            printBoard();
-            winner = checkWon();
-            if(winner.equals("X")) {
-                System.out.println("X wins!");
-            } else if(winner.equals("O")){
-                System.out.println("O wins!");
-            } else {
-                chooseRowColumn();
-                turnsLeft--;
-            }
-        }
-        if(turnsLeft == 0){
-            printBoard();
-            System.out.println("DRAW!");
-        }
-        System.out.print("Play again? (yes or no): ");
-        String keepPlaying = SC.nextLine();
-        if(!keepPlaying.equals("yes") && !keepPlaying.equals("y")) {
-            quit = true;
-        }
+ 
     }
 
     /**
@@ -317,11 +172,6 @@ public class TicTacToe
      * 3) Outside the loop above, print a "Goodbye" message.
      */
     public static void main(String[] args) {
-        printGreeting();
-        while(!quit) {
-            setupGame();
-            playGame();
-        }
-        System.out.println("Goodbye!");
+
     }
 }
